@@ -1,0 +1,53 @@
+#include <iostream>
+
+using namespace std;
+
+long long n, x, d, i = 1, a, dif, difmin = 1000000000, ok, prim;
+
+int main()
+{
+    cin >> n >> x;
+    
+    for(i = 1; i <= n; i ++)
+    {
+        cin >> a;
+        ok = 1;
+        
+        for(d = 2; d * d <= a; d ++)
+        {
+            if(a % d == 0)
+            {
+                ok = 0;
+            }
+        }
+        
+        if(ok == 1)
+        {
+            if(x > a)
+            {
+                dif = x - a;
+            }
+            else
+            {
+                dif = a - x;
+            }
+            
+            if(dif < difmin)
+            {
+                prim = a;
+                difmin = dif;
+            }
+            else if(dif == difmin)
+            {
+                if(a < prim)
+                {
+                    prim = a;
+                }
+            }
+        }
+    }
+    
+    cout << prim;
+
+    return 0;
+}
